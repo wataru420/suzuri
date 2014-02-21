@@ -1,0 +1,54 @@
+body {
+  width : 100% ;
+}
+
+#header {
+  margin-bottom:20px;
+  width : 100% ;
+}
+
+#sidebar {
+  float:left;
+  margin-top:20px;
+  margin-right:20px;
+  width : 10% ;
+}
+
+#main {
+  float:left;
+  margin-top:20px;
+  width : 80% ;
+}
+
+#footer {
+  clear: left;
+  margin-top:20px;
+}
+
+.CodeMirror {
+  line-height: 1em;
+  font-family: monospace;
+  position: relative;
+  float: left;
+  margin-left: 5px;
+  width: 45%;
+  border: 1px solid #eee;
+}
+@media screen and (min-width: 760px)  and (min-height: 768px){
+  .CodeMirror {
+    width: 45%;
+    height: auto;
+  }
+}
+.CodeMirror-scroll {
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+
+
+#markdown_content {
+width: 50%;
+float: left;
+margin-left: 30px;
+padding: 5px;
+}

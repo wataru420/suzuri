@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>suzuri</title>
+<link rel="stylesheet" href="../components/codemirror/lib/codemirror.css">
+<link rel="stylesheet" href="../css/main.css">
+
+</head>
+<body>
+<div id="header">suzuri
+
+<button data-bind="click: addFile">OpenFile</button>
+</div>
+<div id="sidebar">
+  <div class="filelist" data-bind="foreach: filelist">
+  <span data-bind="text: name"> </span>
+<a href="#" data-bind="click: $parent.removeFile">X</a>
+<br/>
+  </div>
+</div>
+<div id="main">
+<textarea id="markdown_code">test</textarea>
+<div id="markdown_content" style="display:block"></div>
+</div>
+<div id="footer">filename</div>
+<input style="display:none;" id="openFile" type="file" />
+<input style="display:none;" id="saveFile" type="file" nwsaveas />
+</body>
+</html>
+<script type="text/javascript" src="../components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="../components/knockout.js/knockout.js"></script>
+<script type="text/javascript" src="../components/codemirror/lib/codemirror.js"></script>
+<script type="text/javascript" src="../components/codemirror/mode/markdown/markdown.js"></script>
+<script type="text/javascript" src="../js/index.js"></script>
+
