@@ -1,43 +1,49 @@
 body {
   width : 100% ;
+  padding-top: 70px;
 }
 
-#header {
-  margin-bottom:20px;
-  width : 100% ;
+.clearfix{
+    content:"";
+    display: block;
+    both: clear;
 }
 
 #sidebar {
   float:left;
-  margin-top:20px;
   margin-right:20px;
-  width : 10% ;
+  width : 200px;
 }
 
 #main {
   float:left;
-  margin-top:20px;
-  width : 80% ;
+  position: absolute;
+  left: 201px;
+  right: 10px;
+  top: 60px;
+  bottom: 10px;
 }
 
-#footer {
-  clear: left;
-  margin-top:20px;
+.container {
+  width: auto;
+  padding: 0 15px;
 }
 
 .CodeMirror {
   line-height: 1em;
   font-family: monospace;
+  font-size: 15px;
   position: relative;
   float: left;
   margin-left: 5px;
   width: 45%;
   border: 1px solid #eee;
+  bottom: 10px;
+  height: 100%;
 }
 @media screen and (min-width: 760px)  and (min-height: 768px){
   .CodeMirror {
     width: 45%;
-    height: auto;
   }
 }
 .CodeMirror-scroll {

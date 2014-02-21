@@ -2,32 +2,46 @@
 <html>
 <head>
     <title>suzuri</title>
+<link rel="stylesheet" href="../components/bootstrap/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="../components/codemirror/lib/codemirror.css">
 <link rel="stylesheet" href="../css/main.css">
 
 </head>
 <body>
-<div id="header">suzuri
 
-<button data-bind="click: addFile">OpenFile</button>
-</div>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+<button type="button" class="btn btn-default navbar-btn" data-bind="click: addFile">OpenFile</button>
+<a class="navbar-brand" href="#">SUZURI</a>
+  </div>
+</nav>
+<div class="clearfix">
 <div id="sidebar">
-  <div class="filelist" data-bind="foreach: filelist">
-  <span data-bind="text: name"> </span>
-<a href="#" data-bind="click: $parent.removeFile">X</a>
-<br/>
+  <div class="filelist" class="list-group" data-bind="foreach: filelist">
+  <a href="#" class="list-group-item" data-bind="click: $parent.selectFile"> 
+    <span data-bind="text: name" style="text-overflow: ellipsis;"></span>
+    <span class="glyphicon glyphicon-remove pull-right" data-bind="click: $parent.removeFile"></span>
+  </a>
   </div>
 </div>
+
 <div id="main">
 <textarea id="markdown_code">test</textarea>
 <div id="markdown_content" style="display:block"></div>
 </div>
-<div id="footer">filename</div>
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+  <div class="container">
+    <p class="text-muted pull-right">Place sticky footer content here.</p>
+  </div>
+</nav>
+
 <input style="display:none;" id="openFile" type="file" />
 <input style="display:none;" id="saveFile" type="file" nwsaveas />
 </body>
 </html>
 <script type="text/javascript" src="../components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="../components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../components/knockout.js/knockout.js"></script>
 <script type="text/javascript" src="../components/codemirror/lib/codemirror.js"></script>
 <script type="text/javascript" src="../components/codemirror/mode/markdown/markdown.js"></script>
