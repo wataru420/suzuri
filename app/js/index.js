@@ -42,11 +42,14 @@ function AppViewModel() {
 
     self.addFile = function() {
         handleOpenButton()
-        self.filelist.push({ name: "New at " + new Date() });
     };
 
     self.removeFile = function() {
         self.filelist.remove(this);
+    }
+
+    self.selectFile = function() {
+        cm.setValue(this.content);
     }
 }
 
@@ -54,40 +57,6 @@ vm = new AppViewModel();
 ko.applyBindings(vm);
 
 };
-
-function initContextMenu() {
-var menubar = new gui.Menu({ type: 'menubar' });
-
-var subMenu = new gui.Menu();
-
-var subMenuItem1 = new gui.MenuItem({
-	label: 'NewFile',
-    click: function() {
-      handleNewButton();
-    }
-});
-var subMenuItem2 = new gui.MenuItem({
-	label: 'Open',
-    click: function() {
-      handleOpenButton()
-    }
-});
-var subMenuItem3 = new gui.MenuItem({
-	label: 'Save',
-    click: function() {
-      handleSaveButton()
-    }
-});
-subMenu.append(subMenuItem1);
-subMenu.append(subMenuItem2);
-subMenu.append(subMenuItem3);
-
-menubar.append(new gui.MenuItem({
-	label: 'File',
-	submenu: subMenu
-}));
-
-gui.Window.get().menu = menubar;}
 
 function newFile() {
   fileEntry = null;
@@ -159,3 +128,40 @@ function handleSaveButton() {
     $("#saveFile").trigger("click");
   }
 }
+
+
+function initContextMenu() {
+var menubar = new gui.Menu({ type: 'menubar' });
+
+var subMenu = new gui.Menu();
+
+var subMenuItem1 = new gui.MenuItem({
+	label: 'NewFile',
+    click: function() {
+      handleNewButton();
+    }
+});
+var subMenuItem2 = new gui.MenuItem({
+	label: 'Open',
+    click: function() {
+      handleOpenButton()
+    }
+});
+var subMenuItem3 = new gui.MenuItem({
+	label: 'Save',
+    click: function() {
+      handleSaveButton()
+    }
+});
+subMenu.append(subMenuItem1);
+subMenu.append(subMenuItem2);
+subMenu.append(subMenuItem3);
+
+menubar.append(new gui.MenuItem({
+	label: 'File',
+	submenu: subMenu
+}));
+
+gui.Window.get().menu = menubar;}
+
+
