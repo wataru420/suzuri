@@ -11,7 +11,9 @@
 
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
+<button type="button" class="btn btn-default navbar-btn" data-bind="click: addFile">NewFile</button>
 <button type="button" class="btn btn-default navbar-btn" data-bind="click: addFile">OpenFile</button>
+<button type="button" class="btn btn-default navbar-btn" data-bind="click: addFile">SaveFile</button>
 <a class="navbar-brand" href="#">SUZURI</a>
   </div>
 </nav>
@@ -26,18 +28,19 @@
 </div>
 
 <div id="main">
-<textarea id="markdown_code">test</textarea>
+<textarea id="markdown_code" data-bind="text: selectedFile.data">test</textarea>
 <div id="markdown_content" style="display:block"></div>
 </div>
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
-  <div class="container">
-    <p class="text-muted pull-right">Place sticky footer content here.</p>
+  <div class="container" data-bind="with: selectedFile">
+    <p class="text-muted" data-bind="text: name">Place sticky footer content here.</p>
   </div>
 </nav>
 
 <input style="display:none;" id="openFile" type="file" />
 <input style="display:none;" id="saveFile" type="file" nwsaveas />
+
 </body>
 </html>
 <script type="text/javascript" src="../components/jquery/dist/jquery.min.js"></script>

@@ -20,6 +20,7 @@ onload = function() {
 
     cm.on("change", function(cm, change) {
       cm.save();
+      vm.selectedFile.data = ko.observable($("#markdown_code").val());
       $("#markdown_content").html(marked($("#markdown_code").val()));
     });
 
@@ -35,28 +36,38 @@ onload = function() {
   });
 
 
-function AppViewModel() {
-    var self = this;
-
-    self.filelist = ko.observableArray([]);
-
-    self.addFile = function() {
-        handleOpenButton()
-    };
-
-    self.removeFile = function() {
-        self.filelist.remove(this);
-    }
-
-    self.selectFile = function() {
-        cm.setValue(this.content);
-    }
-}
-
-vm = new AppViewModel();
-ko.applyBindings(vm);
+  vm = new AppViewModel();
+  ko.applyBindings(vm);
 
 };
+
+function FileViewModel(name,path,data) {
+  var self = this;
+  self.path = ko.observable(path);
+  self.name = ko.observable(name);
+  self.data = ko.observable(data);
+}
+
+function AppViewModel() {
+  var self = this;
+
+  self.selectedFile = ko.observable(null);
+  self.filelist = ko.observableArray([]);
+
+  self.addFile = function() {
+      handleOpenButton()
+  };
+
+  self.removeFile = function() {
+      self.filelist.remove(this);
+  }
+
+  self.selectFile = function() {
+      self.selectedFile = this;
+      cm.setValue(self.selectedFile.data());
+  }
+}
+
 
 function newFile() {
   fileEntry = null;
@@ -74,13 +85,14 @@ function readFileIntoEditor(theFileEntry) {
       console.log("Read failed: " + err);
     }
 
-    cm.setValue(String(data));
-    vm.filelist.push({
-        name: path.basename(theFileEntry),
-        path: theFileEntry,
-        content: String(data)
-    });
+    var name = path.basename(theFileEntry);
+    var fvm = new FileViewModel(name,theFileEntry,String(data));
 
+    vm.filelist.push(fvm);
+    vm.selectedFile = fvm;
+    cm.setValue(String(data));
+console.log(theFileEntry);
+console.log(vm.selectedFile.name());
   });
 }
 
@@ -162,6 +174,5 @@ menubar.append(new gui.MenuItem({
 	submenu: subMenu
 }));
 
-gui.Window.get().menu = menubar;}
-
-
+gui.Window.get().menu = menubar;
+}
