@@ -24,6 +24,7 @@ onload = function() {
       cm.save();
       vm.selectedFile.data = ko.observable($("#markdown_code").val());
       $("#markdown_content").html(marked($("#markdown_code").val()));
+      $("#word_count").text("Words:" + $("#markdown_content").text().length);
     });
 
 
@@ -75,6 +76,7 @@ function AppViewModel() {
   self.selectFile = function() {
       self.selectedFile = this;
       cm.setValue(self.selectedFile.data());
+      $("#file_path").text(self.selectedFile.path());
   }
 }
 
@@ -103,6 +105,7 @@ function readFileIntoEditor(theFileEntry) {
     vm.selectedFile = fvm;
     cm.setValue(String(data));
   });
+  $("#file_path").text(theFileEntry);
 }
 
 function writeEditorToFile(theFileEntry) {
