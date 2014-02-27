@@ -4,6 +4,7 @@
     <title>suzuri</title>
 <link rel="stylesheet" href="../components/bootstrap/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="../components/codemirror/lib/codemirror.css">
+<link rel="stylesheet" href="../components/codemirror/theme/lesser-dark.css">
 <link rel="stylesheet" href="../css/main.css">
 
 </head>
@@ -11,9 +12,9 @@
 
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
-<button type="button" class="btn btn-default navbar-btn" data-bind="click: addFile">NewFile</button>
+<button type="button" class="btn btn-default navbar-btn" data-bind="click: newFile">NewFile</button>
 <button type="button" class="btn btn-default navbar-btn" data-bind="click: addFile">OpenFile</button>
-<button type="button" class="btn btn-default navbar-btn" data-bind="click: addFile">SaveFile</button>
+<button type="button" class="btn btn-default navbar-btn" data-bind="click: saveFile">SaveFile</button>
 <a class="navbar-brand" href="#">SUZURI</a>
   </div>
 </nav>
@@ -34,7 +35,7 @@
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
   <div class="container" data-bind="with: selectedFile">
-    <p class="text-muted" data-bind="text: name">Place sticky footer content here.</p>
+    <p class="text-muted" id="filePath">Place sticky footer content here.</p>
   </div>
 </nav>
 

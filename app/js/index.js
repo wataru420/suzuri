@@ -15,7 +15,9 @@ onload = function() {
       document.getElementById("markdown_code"),
       {
         mode: "markdown",
-        lineNumbers: true
+        lineNumbers: true,
+        lineWrapping: true,
+        theme: "lesser-dark"
       });
 
     cm.on("change", function(cm, change) {
@@ -54,8 +56,16 @@ function AppViewModel() {
   self.selectedFile = ko.observable(null);
   self.filelist = ko.observableArray([]);
 
+  self.newFile = function() {
+      handleOpenButton()
+  };
+
   self.addFile = function() {
       handleOpenButton()
+  };
+
+  self.saveFile = function() {
+      handleSaveButton()
   };
 
   self.removeFile = function() {
@@ -83,6 +93,7 @@ function readFileIntoEditor(theFileEntry) {
   fs.readFile(theFileEntry, function (err, data) {
     if (err) {
       console.log("Read failed: " + err);
+      return;
     }
 
     var name = path.basename(theFileEntry);
@@ -91,8 +102,6 @@ function readFileIntoEditor(theFileEntry) {
     vm.filelist.push(fvm);
     vm.selectedFile = fvm;
     cm.setValue(String(data));
-console.log(theFileEntry);
-console.log(vm.selectedFile.name());
   });
 }
 
@@ -103,9 +112,8 @@ function writeEditorToFile(theFileEntry) {
       console.log("Write failed: " + err);
       return;
     }
-
-    console.log("Write completed.");
   });
+  console.log("Write file complete:" + theFileEntry);
 }
 
 var onChosenFileToOpen = function(theFileEntry) {
@@ -134,8 +142,8 @@ function handleOpenButton() {
 }
 
 function handleSaveButton() {
-  if (fileEntry && hasWriteAccess) {
-    writeEditorToFile(fileEntry);
+  if (vm.selectedFile.path()) {
+    writeEditorToFile(vm.selectedFile.path());
   } else {
     $("#saveFile").trigger("click");
   }
