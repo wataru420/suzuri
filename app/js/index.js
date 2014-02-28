@@ -29,7 +29,6 @@ onload = function() {
 
 
   initContextMenu();
-  newFile();
 
   $("#saveFile").change(function(evt) {
     onChosenFileToSave($(this).val());
@@ -42,6 +41,7 @@ onload = function() {
   vm = new AppViewModel();
   ko.applyBindings(vm);
 
+  handleNewButton();
 };
 
 function FileViewModel(name,path,data) {
@@ -58,7 +58,7 @@ function AppViewModel() {
   self.filelist = ko.observableArray([]);
 
   self.newFile = function() {
-      handleOpenButton()
+      handleNewButton()
   };
 
   self.addFile = function() {
@@ -70,7 +70,14 @@ function AppViewModel() {
   };
 
   self.removeFile = function() {
-      self.filelist.remove(this);
+    self.filelist.remove(this);
+    if (self.filelist().length > 0) {
+      self.selectedFile = self.filelist()[0];
+      cm.setValue(self.selectedFile.data());
+      $("#file_path").text(self.selectedFile.path());
+    } else {
+      handleNewButton();
+    }
   }
 
   self.selectFile = function() {
@@ -117,6 +124,11 @@ function writeEditorToFile(theFileEntry) {
     }
   });
   console.log("Write file complete:" + theFileEntry);
+
+  var name = path.basename(theFileEntry);
+  vm.selectedFile.name(name);
+  vm.selectedFile.path(theFileEntry);
+  $("#file_path").text(theFileEntry);
 }
 
 var onChosenFileToOpen = function(theFileEntry) {
@@ -132,7 +144,11 @@ var onChosenFileToSave = function(theFileEntry) {
 function handleNewButton() {
   if (true) {
     newFile();
+    var fvm = new FileViewModel("NewFile",null,"");
+    vm.filelist.push(fvm);
+    vm.selectedFile = fvm;
     cm.setValue("");
+    $("#file_path").text("");
   } else {
     var x = window.screenX + 10;
     var y = window.screenY + 10;
