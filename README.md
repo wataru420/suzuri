@@ -11,7 +11,13 @@ suzuri made by node-webkit.If you wanna hack.Please fork me.
 
 * run on Mac:
 ```
-open -n -a node-webkit suzuri/app
+cd suzuri
+npm install
+npm install nodewebkit -g
+npm install bower -g
+bower install
+
+open -n -a node-webkit app
 ```
 * run on Linux or Windows:
 ```
