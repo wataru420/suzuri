@@ -15,6 +15,12 @@
 <button type="button" class="btn btn-default navbar-btn" data-bind="click: newFile">NewFile</button>
 <button type="button" class="btn btn-default navbar-btn" data-bind="click: addFile">OpenFile</button>
 <button type="button" class="btn btn-default navbar-btn" data-bind="click: saveFile">SaveFile</button>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-default navbar-btn navbar-right" data-toggle="modal" data-target="#myModal">
+<span class="glyphicon glyphicon-cog"></span>
+</button>
+
 <a class="navbar-brand" href="#">SUZURI</a>
   </div>
 </nav>
@@ -44,6 +50,76 @@
 
 <input style="display:none;" id="openFile" type="file" />
 <input style="display:none;" id="saveFile" type="file" nwsaveas />
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        Comming soon..
+        <div>
+          <label>KeyMap</label>
+          <label class="radio-inline">
+            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+            Normal
+          </label>
+          <label class="radio-inline">
+              <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+              Vim
+          </label>
+          <label class="radio-inline">
+              <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+              emacs
+          </label>
+        </div>
+        <div>
+          <label>editor's therme</label>
+          <select class="form-control">
+              <option selected>default</option>
+              <option>3024-day</option>
+              <option>3024-night</option>
+              <option>ambiance</option>
+              <option>base16-dark</option>
+              <option>base16-light</option>
+              <option>blackboard</option>
+              <option>cobalt</option>
+              <option>eclipse</option>
+              <option>elegant</option>
+              <option>erlang-dark</option>
+              <option>lesser-dark</option>
+              <option>mbo</option>
+              <option>mdn-like</option>
+              <option>midnight</option>
+              <option>monokai</option>
+              <option>neat</option>
+              <option>night</option>
+              <option>paraiso-dark</option>
+              <option>paraiso-light</option>
+              <option>pastel-on-dark</option>
+              <option>rubyblue</option>
+              <option>solarized dark</option>
+              <option>solarized light</option>
+              <option>the-matrix</option>
+              <option>tomorrow-night-eighties</option>
+              <option>twilight</option>
+              <option>vibrant-ink</option>
+              <option>xq-dark</option>
+              <option>xq-light</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 </body>
 </html>
