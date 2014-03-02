@@ -24,8 +24,8 @@
 <a class="navbar-brand" href="#">SUZURI</a>
   </div>
 </nav>
-<div class="clearfix">
-<div id="sidebar">
+<div class="row" style="height:100%;padding-bottom:50px;">
+<div id="sidebar" class="col-md-2">
   <div class="filelist" class="list-group" data-bind="foreach: filelist">
   <a href="#" class="list-group-item" data-bind="click: $parent.selectFile"> 
     <span data-bind="text: name" style="text-overflow: ellipsis;"></span>
@@ -34,12 +34,16 @@
   </div>
 </div>
 
-<div id="main">
+<div class="main col-md-10">
+<div class="row" style="height:100%">
+<div class="col-md-6" style="height:100%">
 <textarea id="markdown_code" data-bind="text: selectedFile.data">test</textarea>
-<div id="markdown_content" style="display:block"></div>
+</div>
+<div id="markdown_content" class="markdown_content col-md-6"></div>
 </div>
 </div>
-<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation" style="height:30px">
   <div class="navbar-text navbar-left">
     <p class="text-muted" id="file_path">Place sticky footer content here.</p>
   </div>
