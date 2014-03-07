@@ -33,7 +33,7 @@ onload = function() {
   $("#saveFile").change(function(evt) {
     onChosenFileToSave($(this).val());
   });
-  $("#openFile").change(function(evt) {
+  $("body").on("change","#openFile",function(evt) {
     onChosenFileToOpen($(this).val());
   });
 
@@ -157,14 +157,16 @@ function handleNewButton() {
 }
 
 function handleOpenButton() {
-  $("#openFile").trigger("click");
+  $("#openFile").remove();
+  $("#fileTags").append($('<input style="display:none;" id="openFile" type="file" />').click());
 }
 
 function handleSaveButton() {
   if (vm.selectedFile.path()) {
     writeEditorToFile(vm.selectedFile.path());
   } else {
-    $("#saveFile").trigger("click");
+    $("#saveFile").remove();
+    $("#fileTags").append($('<input style="display:none;" id="saveFile" type="file" nwsaveas />').click());
   }
 }
 
