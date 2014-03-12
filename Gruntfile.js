@@ -97,7 +97,7 @@ module.exports = function (grunt) {
       },
       finalWindowsApp: {
         options: {
-          archive: '<%= config.dist %>/papyrus.zip'
+          archive: '<%= config.dist %>/suzuri.zip'
         },
         files: [
           {
@@ -113,7 +113,7 @@ module.exports = function (grunt) {
         files: [
           {
             src: '<%= config.dist %>/node-webkit.app',
-            dest: '<%= config.dist %>/papyrus.app'
+            dest: '<%= config.dist %>/suzuri.app'
           }
         ]
       },
@@ -130,10 +130,10 @@ module.exports = function (grunt) {
 
   grunt.registerTask('chmod', 'Add lost Permissions.', function () {
     var fs = require('fs');
-    fs.chmodSync('dist/papyrus.app/Contents/Frameworks/node-webkit Helper EH.app/Contents/MacOS/node-webkit Helper EH', '555');
-    fs.chmodSync('dist/papyrus.app/Contents/Frameworks/node-webkit Helper NP.app/Contents/MacOS/node-webkit Helper NP', '555');
-    fs.chmodSync('dist/papyrus.app/Contents/Frameworks/node-webkit Helper.app/Contents/MacOS/node-webkit Helper', '555');
-    fs.chmodSync('dist/papyrus.app/Contents/MacOS/node-webkit', '555');
+    fs.chmodSync('dist/suzuri.app/Contents/Frameworks/node-webkit Helper EH.app/Contents/MacOS/node-webkit Helper EH', '555');
+    fs.chmodSync('dist/suzuri.app/Contents/Frameworks/node-webkit Helper NP.app/Contents/MacOS/node-webkit Helper NP', '555');
+    fs.chmodSync('dist/suzuri.app/Contents/Frameworks/node-webkit Helper.app/Contents/MacOS/node-webkit Helper', '555');
+    fs.chmodSync('dist/suzuri.app/Contents/MacOS/node-webkit', '555');
   });
 
   grunt.registerTask('createLinuxApp', 'Create linux distribution.', function () {
@@ -150,7 +150,7 @@ module.exports = function (grunt) {
     var fs = require('fs');
     var childProcess = require('child_process');
     var exec = childProcess.exec;
-    exec('copy /b tmp\\nw.exe+tmp\\app.nw tmp\\papyrus.exe && del tmp\\app.nw tmp\\nw.exe && echo.>tmp\\ready', function (error, stdout, stderr) {
+    exec('copy /b tmp\\nw.exe+tmp\\app.nw tmp\\suzuri.exe && del tmp\\app.nw tmp\\nw.exe && echo.>tmp\\ready', function (error, stdout, stderr) {
       console.log(stderr, stdout, error);
     });
     while (!fs.existsSync('tmp/ready')) {}
