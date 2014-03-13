@@ -133,10 +133,10 @@ function AppViewModel() {
 
     self.saveOption = function () {
         localStorage.keyMap = self.keyMap();
-        cm.setOption("keyMap", self.keyMap());
+        cm.setOption('keyMap', self.keyMap());
         localStorage.codeTheme = self.codeTheme();
-        cm.setOption("theme", self.codeTheme());
-    }
+        cm.setOption('theme', self.codeTheme());
+    };
 }
 
 
@@ -203,11 +203,13 @@ function initContextMenu() {
 $(function () {
 
     marked.setOptions({
-      highlight: function (code,lang) {
-        return require('highlight.js').highlightAuto(code).value;
-      }
+        highlight: function (code) {
+            return require('highlight.js').highlightAuto(code).value;
+        }
     });
 
+    localStorage.keyMap = localStorage.keyMap?localStorage.keyMap:'default';
+    localStorage.codeTheme = localStorage.codeTheme?localStorage.codeTheme:'default';
     vm = new AppViewModel();
     cm = CodeMirror.fromTextArea(
        document.getElementById('markdown_code'),
