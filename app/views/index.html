@@ -5,8 +5,37 @@
 <link rel="stylesheet" href="../components/bootstrap/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="../components/codemirror/lib/codemirror.css">
 <link rel="stylesheet" href="../components/codemirror/theme/lesser-dark.css">
-<link rel="stylesheet" href="../css/main.css">
+<link rel="stylesheet" href="../components/codemirror/theme/3024-day.css">
+<link rel="stylesheet" href="../components/codemirror/theme/3024-night.css">
+<link rel="stylesheet" href="../components/codemirror/theme/ambiance.css">
+<link rel="stylesheet" href="../components/codemirror/theme/base16-dark.css">
+<link rel="stylesheet" href="../components/codemirror/theme/base16-light.css">
+<link rel="stylesheet" href="../components/codemirror/theme/blackboard.css">
+<link rel="stylesheet" href="../components/codemirror/theme/cobalt.css">
+<link rel="stylesheet" href="../components/codemirror/theme/eclipse.css">
+<link rel="stylesheet" href="../components/codemirror/theme/elegant.css">
+<link rel="stylesheet" href="../components/codemirror/theme/erlang-dark.css">
+<link rel="stylesheet" href="../components/codemirror/theme/lesser-dark.css">
+<link rel="stylesheet" href="../components/codemirror/theme/mbo.css">
+<link rel="stylesheet" href="../components/codemirror/theme/midnight.css">
+<link rel="stylesheet" href="../components/codemirror/theme/monokai.css">
+<link rel="stylesheet" href="../components/codemirror/theme/neat.css">
+<link rel="stylesheet" href="../components/codemirror/theme/night.css">
+<link rel="stylesheet" href="../components/codemirror/theme/paraiso-dark.css">
+<link rel="stylesheet" href="../components/codemirror/theme/paraiso-light.css">
+<link rel="stylesheet" href="../components/codemirror/theme/pastel-on-dark.css">
+<link rel="stylesheet" href="../components/codemirror/theme/rubyblue.css">
+<link rel="stylesheet" href="../components/codemirror/theme/solarized.css">
+<link rel="stylesheet" href="../components/codemirror/theme/the-matrix.css">
+<link rel="stylesheet" href="../components/codemirror/theme/tomorrow-night-eighties.css">
+<link rel="stylesheet" href="../components/codemirror/theme/twilight.css">
+<link rel="stylesheet" href="../components/codemirror/theme/vibrant-ink.css">
+<link rel="stylesheet" href="../components/codemirror/theme/xq-dark.css">
+<link rel="stylesheet" href="../components/codemirror/theme/xq-light.css">
 
+
+<link rel="stylesheet" href="../css/main.css">
+<link rel="stylesheet" title="github" href="../components/highlight.js/src/styles/github.css">
 </head>
 <body>
 
@@ -66,61 +95,29 @@
         <h4 class="modal-title" id="myModalLabel">Modal title</h4>
       </div>
       <div class="modal-body">
-        Comming soon..
         <div>
           <label>KeyMap</label>
           <label class="radio-inline">
-            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+            <input type="radio" name="optionsRadios" id="optionsRadios1" value="default" data-bind="checked: keyMap">
             Normal
           </label>
           <label class="radio-inline">
-              <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+              <input type="radio" name="optionsRadios" id="optionsRadios2" value="vim" data-bind="checked: keyMap">
               Vim
           </label>
           <label class="radio-inline">
-              <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+              <input type="radio" name="optionsRadios" id="optionsRadios2" value="emacs" data-bind="checked: keyMap">
               emacs
           </label>
         </div>
         <div>
           <label>editor's therme</label>
-          <select class="form-control">
-              <option selected>default</option>
-              <option>3024-day</option>
-              <option>3024-night</option>
-              <option>ambiance</option>
-              <option>base16-dark</option>
-              <option>base16-light</option>
-              <option>blackboard</option>
-              <option>cobalt</option>
-              <option>eclipse</option>
-              <option>elegant</option>
-              <option>erlang-dark</option>
-              <option>lesser-dark</option>
-              <option>mbo</option>
-              <option>mdn-like</option>
-              <option>midnight</option>
-              <option>monokai</option>
-              <option>neat</option>
-              <option>night</option>
-              <option>paraiso-dark</option>
-              <option>paraiso-light</option>
-              <option>pastel-on-dark</option>
-              <option>rubyblue</option>
-              <option>solarized dark</option>
-              <option>solarized light</option>
-              <option>the-matrix</option>
-              <option>tomorrow-night-eighties</option>
-              <option>twilight</option>
-              <option>vibrant-ink</option>
-              <option>xq-dark</option>
-              <option>xq-light</option>
-          </select>
+          <select class="form-control" data-bind="options: codeThemeList, value: codeTheme"></select>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" data-bind="click: saveOption">Save changes</button>
       </div>
     </div>
   </div>
@@ -133,6 +130,8 @@
 <script type="text/javascript" src="../components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../components/knockout.js/knockout.js"></script>
 <script type="text/javascript" src="../components/codemirror/lib/codemirror.js"></script>
+<script type="text/javascript" src="../components/codemirror/keymap/vim.js"></script>
+<script type="text/javascript" src="../components/codemirror/keymap/emacs.js"></script>
 <script type="text/javascript" src="../components/codemirror/mode/markdown/markdown.js"></script>
 <script type="text/javascript" src="../js/index.js"></script>
 

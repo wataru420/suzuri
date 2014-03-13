@@ -67,6 +67,38 @@ function handleSaveButton() {
 function AppViewModel() {
     var self = this;
 
+    self.keyMap = ko.observable(localStorage.keyMap);
+    self.codeThemeList = ['default',
+                          '3024-day',
+                          '3024-night',
+                          'ambiance',
+                          'base16-dark',
+                          'base16-light',
+                          'blackboard',
+                          'cobalt',
+                          'eclipse',
+                          'elegant',
+                          'erlang-dark',
+                          'lesser-dark',
+                          'mbo',
+                          'midnight',
+                          'monokai',
+                          'neat',
+                          'night',
+                          'paraiso-dark',
+                          'paraiso-light',
+                          'pastel-on-dark',
+                          'rubyblue',
+                          'solarized dark',
+                          'solarized light',
+                          'the-matrix',
+                          'tomorrow-night-eighties',
+                          'twilight',
+                          'vibrant-ink',
+                          'xq-dark',
+                          'xq-light'];
+    self.codeTheme = ko.observable(localStorage.codeTheme);
+
     self.selectedFile = ko.observable(null);
     self.filelist = ko.observableArray([]);
 
@@ -98,6 +130,13 @@ function AppViewModel() {
         cm.setValue(self.selectedFile.data());
         $('#file_path').text(self.selectedFile.path());
     };
+
+    self.saveOption = function () {
+        localStorage.keyMap = self.keyMap();
+        cm.setOption("keyMap", self.keyMap());
+        localStorage.codeTheme = self.codeTheme();
+        cm.setOption("theme", self.codeTheme());
+    }
 }
 
 
@@ -162,13 +201,22 @@ function initContextMenu() {
 }
 
 $(function () {
+
+    marked.setOptions({
+      highlight: function (code,lang) {
+        return require('highlight.js').highlightAuto(code).value;
+      }
+    });
+
+    vm = new AppViewModel();
     cm = CodeMirror.fromTextArea(
        document.getElementById('markdown_code'),
        {
         mode: 'markdown',
         lineNumbers: true,
         lineWrapping: true,
-        theme: 'lesser-dark'
+        theme: vm.codeTheme(),
+        keyMap: vm.keyMap()
     });
 
     cm.on('change', function (cm) {
@@ -180,14 +228,13 @@ $(function () {
 
     initContextMenu();
 
-    $('#saveFile').change(function () {
+    $('body').on('change', '#saveFile', function () {
         onChosenFileToSave($(this).val());
     });
     $('body').on('change', '#openFile', function () {
         onChosenFileToOpen($(this).val());
     });
 
-    vm = new AppViewModel();
     ko.applyBindings(vm);
 
     handleNewButton();
