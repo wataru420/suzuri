@@ -208,8 +208,8 @@ $(function () {
         }
     });
 
-    localStorage.keyMap = localStorage.keyMap?localStorage.keyMap:'default';
-    localStorage.codeTheme = localStorage.codeTheme?localStorage.codeTheme:'default';
+    localStorage.keyMap = localStorage.keyMap ? localStorage.keyMap : 'default';
+    localStorage.codeTheme = localStorage.codeTheme ? localStorage.codeTheme : 'default';
     vm = new AppViewModel();
     cm = CodeMirror.fromTextArea(
        document.getElementById('markdown_code'),
