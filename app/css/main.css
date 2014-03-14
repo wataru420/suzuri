@@ -13,12 +13,13 @@ body {
   both: clear;
 }
 
-#sidebar {
+.sidebar {
   float:left;
   margin-right:20px;
   overflow:auto;
   height: 100%;
   padding-bottom:30px;
+  padding-right:0px;
 }
 
 .main {
@@ -28,6 +29,7 @@ body {
   top: 60px;
   bottom: 10px;
   padding-bottom:30px;
+  padding-left:0px;
 }
 
 .markdown_content {

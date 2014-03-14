@@ -54,11 +54,11 @@
   </div>
 </nav>
 <div class="row" style="height:100%;padding-bottom:50px;">
-<div id="sidebar" class="col-md-2">
+<div class="sidebar col-md-2">
   <div class="filelist" class="list-group" data-bind="foreach: filelist">
   <a href="#" class="list-group-item" data-bind="click: $parent.selectFile"> 
-    <span data-bind="text: name" style="text-overflow: ellipsis;"></span>
-    <span class="glyphicon glyphicon-remove pull-right" data-bind="click: $parent.removeFile"></span>
+    <div data-bind="text: name" style="text-overflow: ellipsis;"></div>
+    <div class="glyphicon glyphicon-remove pull-right" data-bind="click: $parent.removeFile" style="margin-top: -18px;"></div>
   </a>
   </div>
 </div>
