@@ -29,3 +29,7 @@ nw suzuri/app
 Questions, comments, bug reports, and pull requests are all welcome.
 Submit them at [the project on GitHub](https://github.com/wataru420/suzuri).
 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/wataru420/suzuri/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
