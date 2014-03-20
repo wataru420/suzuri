@@ -1,4 +1,5 @@
 # suzuri 硯
+[![Build Status](https://travis-ci.org/wataru420/suzuri.png?branch=master)](https://travis-ci.org/wataru420/suzuri)
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/wataru420/suzuri/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
