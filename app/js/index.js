@@ -121,10 +121,10 @@ function AppViewModel() {
         self.filelist.remove(this);
         if (self.filelist().length > 0) {
             self.selectedFile = self.filelist()[0];
-            var changeStatus = this.change();
+            var changeStatus = self.selectedFile.change();
             cm.setValue(self.selectedFile.data());
             $('#file_path').text(self.selectedFile.path());
-            vm.selectedFile.change(changeStatus);
+            self.selectedFile.change(changeStatus);
         } else {
             handleNewButton();
         }
@@ -191,7 +191,7 @@ function initContextMenu() {
         }
     });
     var subMenuItem3 = new gui.MenuItem({
-        changeStatuslabel: 'Save',
+        label: 'Save',
         click: function () {
             handleSaveButton();
         }
