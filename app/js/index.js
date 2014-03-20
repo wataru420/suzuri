@@ -19,6 +19,7 @@ function FileViewModel(name, path, data) {
     self.path = ko.observable(path);
     self.name = ko.observable(name);
     self.data = ko.observable(data);
+    self.change = ko.observable(false);
 }
 
 function writeEditorToFile(theFileEntry) {
@@ -32,6 +33,7 @@ function writeEditorToFile(theFileEntry) {
 
     var name = path.basename(theFileEntry);
     vm.selectedFile.name(name);
+    vm.selectedFile.change(false);
     vm.selectedFile.path(theFileEntry);
     $('#file_path').text(theFileEntry);
 }
@@ -42,6 +44,7 @@ function handleNewButton() {
         vm.filelist.push(fvm);
         vm.selectedFile = fvm;
         cm.setValue('');
+        vm.selectedFile.change(false);
         $('#file_path').text('');
     } else {
         var x = window.screenX + 10;
@@ -127,8 +130,10 @@ function AppViewModel() {
 
     self.selectFile = function () {
         self.selectedFile = this;
+        var changeStatus = this.change();
         cm.setValue(self.selectedFile.data());
         $('#file_path').text(self.selectedFile.path());
+        vm.selectedFile.change(changeStatus);
     };
 
     self.saveOption = function () {
@@ -153,6 +158,7 @@ function readFileIntoEditor(theFileEntry) {
         vm.filelist.push(fvm);
         vm.selectedFile = fvm;
         cm.setValue(String(data));
+        vm.selectedFile.change(false);
     });
     $('#file_path').text(theFileEntry);
 }
@@ -224,6 +230,7 @@ $(function () {
     cm.on('change', function (cm) {
         cm.save();
         vm.selectedFile.data = ko.observable($('#markdown_code').val());
+        vm.selectedFile.change(true);
         $('#markdown_content').html(marked($('#markdown_code').val()));
         $('#word_count').text('Words:' + $('#markdown_content').text().length);
     });

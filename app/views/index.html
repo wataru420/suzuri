@@ -57,7 +57,7 @@
 <div class="sidebar col-md-2">
   <div class="filelist" class="list-group" data-bind="foreach: filelist">
   <a href="#" class="list-group-item" data-bind="click: $parent.selectFile"> 
-    <div data-bind="text: name" style="text-overflow: ellipsis;"></div>
+    <div data-bind="text: change() ? '* ' + name() : name()" style="text-overflow: ellipsis;"></div>
     <div class="glyphicon glyphicon-remove pull-right" data-bind="click: $parent.removeFile" style="margin-top: -18px;"></div>
   </a>
   </div>
